@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 .vscode
+.deploy_git
+public
+db.json
