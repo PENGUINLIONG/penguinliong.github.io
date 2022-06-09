@@ -1,0 +1,3 @@
+[submodule "themes/volantis-penguinliong"]
+	path = themes/volantis-penguinliong
+	url = https://github.com/PENGUINLIONG/hexo-theme-volantis-penguinliong
