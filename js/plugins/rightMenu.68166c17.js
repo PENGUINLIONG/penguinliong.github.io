@@ -455,7 +455,6 @@ const RightMenu = (() => {
 
   // 执行打印页面
   fn.printHtml = () => {
-    if (volantis.isReadModel) fn.readingModel();
     DOMController.setAttribute('details', 'open', 'true');
     DOMController.remove('.cus-article-bkg');
     DOMController.remove('.iziToast-overlay');
@@ -517,25 +516,6 @@ const RightMenu = (() => {
     DOMController.toggleClass(document.querySelector('#post'), 'post_read')
     DOMController.toggleClass(document.querySelector('#l_cover'), 'read_cover')
     DOMController.toggleClass(document.querySelector('.widget.toc-wrapper'), 'post_read')
-
-    volantis.isReadModel = volantis.isReadModel === undefined ? true : !volantis.isReadModel;
-    if (volantis.isReadModel) {
-      const option = {
-        backgroundColor: 'var(--color-read-post)',
-        icon: rightMenuConfig.faicon + ' fa-book-reader',
-        time: 5000
-      }
-      if (messageRightMenu) VolantisApp.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
-      document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
-      document.querySelector('#l_body').addEventListener('click', (event) => {
-        if (DOMController.hasClass(event.target, 'common_read')) {
-          fn.readingModel();
-        }
-      });
-    } else {
-      document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
-      document.querySelector('#post').removeEventListener('click', fn.readingModel);
-    }
   }
 
   return {

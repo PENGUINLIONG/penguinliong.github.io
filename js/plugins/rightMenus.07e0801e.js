@@ -1,6 +1,6 @@
 
 const RightMenus = {
-  defaultEvent: ['copyText', 'copyLink', 'copyPaste', 'copyAll', 'copyCut', 'copyImg', 'printMode', 'readMode'],
+  defaultEvent: ['copyText', 'copyLink', 'copyPaste', 'copyAll', 'copyCut', 'copyImg'],
   defaultGroup: ['navigation', 'inputBox', 'seletctText', 'elementCheck', 'elementImage', 'articlePage'],
   messageRightMenu: volantis.GLOBAL_CONFIG.plugins.message.enable && volantis.GLOBAL_CONFIG.plugins.message.rightmenu.enable,
   corsAnywhere: volantis.GLOBAL_CONFIG.plugins.rightmenus.options.corsAnywhere,
@@ -14,7 +14,6 @@ const RightMenus = {
     RightMenus.fun.init();
     volantis.pjax.send(() => {
       RightMenus.fun.hideMenu();
-      if (volantis.isReadModel) RightMenus.fun.readMode();
     })
   },
 
@@ -528,79 +527,9 @@ RightMenus.fun = (() => {
     })
   }
 
-  fn.printMode = () => {
-    if (window.location.pathname === globalData.pathName) {
-      if (RightMenus.messageRightMenu) {
-        const message = '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>'
-        VolantisApp.question('', message, { time: 9000 }, () => { fn.printHtml() })
-      } else {
-        fn.printHtml()
-      }
-    }
-  }
-
-  fn.printHtml = () => {
-    if (volantis.isReadModel) fn.readMode();
-    DOMController.setAttribute('details', 'open', 'true');
-    DOMController.removeList([
-      '.cus-article-bkg', '.iziToast-overlay', '.iziToast-wrapper', '.prev-next',
-      'footer', '#l_header', '#l_cover', '#l_side', '#comments', '#s-top', '#BKG',
-      '#rightmenu-wrapper', '.nav-tabs', '.parallax-mirror', '.new-meta-item.share', 'div.footer'
-    ]);
-    DOMController.setStyleList([
-      ['body', 'backgroundColor', 'unset'], ['#l_main', 'width', '100%'], ['#post', 'boxShadow', 'none'],
-      ['#post', 'background', 'none'], ['#post', 'padding', '0'], ['h1', 'textAlign', 'center'],
-      ['h1', 'fontWeight', '600'], ['h1', 'fontSize', '2rem'], ['h1', 'marginBottom', '20px'],
-      ['.tab-pane', 'display', 'block'], ['.tab-content', 'borderTop', 'none'], ['.highlight>table pre', 'whiteSpace', 'pre-wrap'],
-      ['.highlight>table pre', 'wordBreak', 'break-all'], ['.fancybox img', 'height', 'auto'], ['.fancybox img', 'weight', 'auto']
-    ]);
-    setTimeout(() => {
-      window.print();
-      document.body.innerHTML = '';
-      window.location.reload();
-    }, 50);
-  }
-
-  fn.readMode = () => {
-    if (typeof ScrollReveal === 'function') ScrollReveal().clean('#comments');
-    DOMController.fadeToggleList([
-      document.querySelector('#l_header'), document.querySelector('footer'),
-      document.querySelector('#s-top'), document.querySelector('.article-meta#bottom'),
-      document.querySelector('.prev-next'), document.querySelector('#l_side'),
-      document.querySelector('#comments')
-    ]);
-    DOMController.toggleClassList([
-      [document.querySelector('#l_main'), 'common_read'], [document.querySelector('#l_main'), 'common_read_main'],
-      [document.querySelector('#l_body'), 'common_read'], [document.querySelector('#safearea'), 'common_read'],
-      [document.querySelector('#pjax-container'), 'common_read'], [document.querySelector('#read_bkg'), 'common_read_hide'],
-      [document.querySelector('h1'), 'common_read_h1'], [document.querySelector('#post'), 'post_read'],
-      [document.querySelector('#l_cover'), 'read_cover'], [document.querySelector('.widget.toc-wrapper'), 'post_read']
-    ]);
-    volantis.isReadModel = volantis.isReadModel === undefined ? true : !volantis.isReadModel;
-    if (volantis.isReadModel) {
-      if (RightMenus.messageRightMenu) VolantisApp.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', {
-        backgroundColor: 'var(--color-read-post)',
-        icon: rightMenuConfig.options.iconPrefix + ' fa-book-reader',
-        displayMode: 1,
-        time: 5000
-      });
-      document.querySelector('#l_body').removeEventListener('click', fn.readMode);
-      document.querySelector('#l_body').addEventListener('click', (event) => {
-        if (DOMController.hasClass(event.target, 'common_read')) {
-          fn.readMode();
-        }
-      });
-    } else {
-      document.querySelector('#l_body').removeEventListener('click', fn.readMode);
-      document.querySelector('#post').removeEventListener('click', fn.readMode);
-      document.querySelector('.prev-next').style.display = 'flex'; // 单独修改
-    }
-  }
-
   return {
     init: fn.initEvent,
-    hideMenu: fn.hideMenu,
-    readMode: fn.readMode
+    hideMenu: fn.hideMenu
   }
 })()
 
