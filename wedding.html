@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, user-scalable=no, width=device-width"
+    />
+
+    <title>请柬</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+
+    <!-- Color set up: https://colorhunt.co/palette/fef9e1e5d0aca31d1d2323-->
+    <style>
+      body {
+        font-family: 'Noto Serif SC', serif;
+        font-size: 1.5em;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        color: #6D2323;
+        background-color: #FEF9F1;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 1em;
+      }
+
+      h1 {
+        font-size: 2em;
+        text-align: center;
+      }
+      h2 {
+        font-size: 1.5em;
+        padding: 0.25em 0.5em;
+        margin: 1em 0 0.5em;
+        background-color: #f2e6d2;
+      }
+
+      table {
+        width: 21em;
+        background-color: #f6efe2;
+      }
+      tbody {
+        line-height: 3em;
+      }
+      td {
+        width: 3em;
+        height: 3em;
+        padding: 0;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+      }
+
+      #location {
+        width: 100%;
+        height: 300px;
+      }
+    </style>
+
+    <!-- https://lbs.amap.com/api/javascript-api-v2/getting-started -->
+    <script type="text/javascript">
+      window._AMapSecurityConfig = {
+        securityJsCode: "714d10c190f50d8e581357bb6b30d653",
+      };
+    </script>
+    <script src="https://webapi.amap.com/loader.js"></script>
+  </head>
+  <body>
+    <main style="max-width: 23em;">
+      <h1>请柬</h1>
+      <p style="text-indent: 2em;">
+        &#9;谨定于 2025 年 4 月 13 日 (星期日) 下午 5 时<br/>
+        于深圳湾安达市酒店 5 层 靓室 II 举行<br/>
+        <div style="display: flex; vertical-align: middle;">
+          <div style="text-align: center; display: inline-flex; flex: 1">
+            <div style="text-align: center; display: inline-block; flex: 1"><b>梁任冬</b><br/>先生</div>
+          </div>
+          <div style="text-align: center; display: flex; flex-direction: column; justify-content: center;">与</div>
+          <div style="text-align: center; display: inline-flex; flex: 1">
+            <div style="text-align: center; display: inline-block; flex: 1"><b>林　凌</b><br/>女士</div>
+          </div>
+        </div>
+        <br/>
+        之结婚典礼
+      </p>
+
+      <p style="text-indent: 2em;">
+        恭请 <b><a id="name">{name}</a></b> <a id="title">{title}</a> 莅临主礼
+      </p>
+
+      <p style="text-align: right;">
+        敬候光临<br/>
+      </p>
+
+      <p style="text-align: right;">
+        梁任冬 林凌<br/>
+        <span id="date-signature"></span>
+      </p>
+
+      <p>
+        典礼完毕 敬备晚宴<br/>
+        请着正式服装
+      </p>
+
+      <!------------------------------------------------------------->
+      <hr style="border: 1px solid #f2e6d2; margin: 4em 0.5em 4em;">
+
+      <h2>日程</h2>
+
+      <p>
+        <div style="text-align: center;">
+          2025 年 4 月 13 日 (星期日)
+        </div>
+        <br/>
+
+        <div style="display: flex;">
+          <div style="flex: 1"></div>
+          <table style="display: inline-block; border-collapse: collapse; text-align: center;">
+            <thead>
+              <tr style="background-color: #6D2323; color: #f2e6d2;">
+                <th>日</th>
+                <th>一</th>
+                <th>二</th>
+                <th>三</th>
+                <th>四</th>
+                <th>五</th>
+                <th>六</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <td style="background-color: #A31D1D; color: #FEF9F1;">13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+              </tr>
+              <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="flex: 1"></div>
+        </div>
+
+        <ul style="list-style: none; padding: 0;">
+          <div style="display: flex; flex-direction: row; align-items: stretch;">
+            <div style="display: block; flex: 1; text-align: right; padding: 0.5em">
+              <div>下午 5 时</div>
+              <div>下午 5:30</div>
+              <div>下午 6 时</div>
+            </div>
+            <div style="display: block; flex: 1; text-align: left; padding: 0.5em">
+              <div>嘉宾入场</div>
+              <div>婚礼仪式</div>
+              <div>晚宴</div>
+            </div>
+          </div>
+        </ul>
+
+      </p>
+
+      <!------------------------------------------------------------->
+      <hr style="border: 1px solid #f2e6d2; margin: 4em 0.5em 4em;">
+
+      <h2>位置</h2>
+      <div style="display: flex; flex-direction: row; align-items: stretch;">
+        <div style="display: flex; max-width: 10em; align-items: center;">
+          <svg width="175" height="44" viewBox="0 0 175 44" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.323 32.244c.168 0 .168-.102.134-.238l-3.212-9.144c-.169-.508-.338-.508-.507 0L8.76 32.006c-.065.17 0 .238.104.238h6.46zm-3.518-13.547c.405-1.119.541-1.322.745-1.322.203 0 .337.17.744 1.219.507 1.288 5.815 15.274 7.88 20.423 1.218 3.014 2.2 3.557 2.91 3.759.507.17 1.015.203 1.353.203.203 0 .339.033.339.205 0 .202-.307.27-.677.27-.508 0-2.977 0-5.311-.068-.643-.033-1.016-.033-1.016-.236 0-.138.103-.204.237-.238.204-.069.407-.372.204-.915l-3.147-8.331c-.066-.137-.134-.203-.304-.203h-7.27c-.17 0-.273.101-.341.271L6.122 39.73c-.303.846-.475 1.659-.475 2.268 0 .677.712.982 1.287.982h.338c.237 0 .338.068.338.205 0 .202-.204.27-.507.27-.811 0-2.266-.1-2.637-.1-.375 0-2.235.1-3.825.1-.437 0-.641-.068-.641-.27 0-.137.134-.205.303-.205.238 0 .713-.033.982-.067 1.556-.204 2.233-1.49 2.84-3.183l7.68-21.032zm30.76 20.15c.066 2.779.404 3.658 1.319 3.93.641.169 1.387.202 1.69.202.17 0 .272.068.272.205 0 .202-.206.269-.608.269-1.932 0-3.282-.1-3.588-.1-.303 0-1.725.1-3.246.1-.338 0-.542-.033-.542-.27 0-.136.1-.204.272-.204.27 0 .878-.033 1.385-.203.846-.236 1.015-1.218 1.015-4.301l.035-19.406c0-1.32.102-1.694.372-1.694.271 0 .847.746 1.184 1.084.506.576 5.547 6.03 10.756 11.616 3.35 3.59 7.037 7.723 8.115 8.84l-.369-17.205c-.034-2.2-.27-2.946-1.318-3.217-.61-.136-1.388-.17-1.659-.17-.235 0-.272-.102-.272-.237 0-.202.272-.237.677-.237 1.523 0 3.148.103 3.52.103.372 0 1.487-.103 2.874-.103.372 0 .607.035.607.237 0 .135-.131.237-.369.237-.171 0-.409 0-.813.102-1.116.237-1.252.982-1.252 3.015l-.07 19.846c0 2.236-.065 2.405-.302 2.405-.27 0-.675-.373-2.47-2.169-.37-.337-5.242-5.316-8.827-9.176a689.058 689.058 0 0 1-8.828-9.722l.44 16.223zm57.151-15.326c.134-.517.2-.968.2-1.353 0-.345-.05-.717-.14-1.122a3.16 3.16 0 0 0-.52-1.122 3.307 3.307 0 0 0-1.006-.892c-.422-.247-.979-.374-1.665-.374-1.267 0-2.502.356-3.708 1.065-1.21.71-2.34 1.64-3.393 2.79a24.227 24.227 0 0 0-2.903 3.945 34.875 34.875 0 0 0-2.27 4.489 29.277 29.277 0 0 0-1.466 4.403c-.345 1.42-.516 2.667-.516 3.74 0 1.23.236 2.227.716 2.994.48.767 1.275 1.148 2.386 1.148 1.111 0 2.242-.344 3.391-1.034a16.296 16.296 0 0 0 3.16-2.474c.96-.96 1.782-1.918 2.474-2.877.69-.96 1.13-1.709 1.322-2.245l3.047-8.46c.46-1.23.756-2.102.891-2.621m-1.891 15.411c-.25.922-.375 1.747-.375 2.476 0 .998 1.037 1.496 1.996 1.496.766 0 1.456-.22 2.07-.661a7.946 7.946 0 0 0 1.579-1.497c.443-.557.805-1.114 1.093-1.671.287-.556.49-.951.476-.856l.747.403c-.063.098-.351.637-.733 1.288a8.863 8.863 0 0 1-1.495 1.872 9.726 9.726 0 0 1-2.13 1.553c-.801.442-1.741.665-2.815.665-2.529 0-3.793-1.152-3.793-3.457 0-.267.056-.738.171-1.412.116-.668.27-1.274.463-1.81h-.118a92.092 92.092 0 0 1-1.837 2.157 16.867 16.867 0 0 1-2.33 2.188 12.67 12.67 0 0 1-2.845 1.67c-1.032.44-2.186.664-3.447.664-.809 0-1.321-.261-2.096-.604-.733-.322-1.295-.872-1.871-1.467-.575-.595-1.025-1.355-1.351-2.276-.325-.921-.487-2.015-.487-3.28 0-1.536.304-3.071.918-4.607A21.734 21.734 0 0 1 82 27.363c.978-1.403 1.995-2.554 3.28-3.744a31.168 31.168 0 0 1 3.91-3.11 17.638 17.638 0 0 1 3.675-1.9c1.284-.5 2.424-.75 3.42-.75 1.15 0 2.126.325 2.931.978.803.653 1.207 1.515 1.207 2.592h.115l7.3-20.624h-5.057l.23-.805h8.582L98.714 36.052c-.345 1-.643 1.958-.89 2.88m34.457-6.688c.169 0 .169-.102.134-.238l-3.213-9.144c-.169-.508-.337-.508-.506 0l-2.978 9.144c-.07.17 0 .238.1.238h6.463zm-3.52-13.547c.408-1.119.543-1.322.745-1.322.204 0 .34.17.746 1.219.507 1.288 5.817 15.274 7.878 20.423 1.22 3.014 2.2 3.557 2.912 3.759a4.34 4.34 0 0 0 1.351.203c.206 0 .337.033.337.205 0 .202-.302.27-.675.27-.506 0-2.975 0-5.31-.068-.642-.033-1.015-.033-1.015-.236 0-.138.1-.204.237-.238.201-.069.407-.372.201-.915l-3.144-8.331c-.07-.137-.137-.203-.306-.203h-7.272c-.168 0-.269.101-.338.271l-2.027 5.995c-.306.846-.475 1.659-.475 2.268 0 .677.709.982 1.287.982h.338c.237 0 .337.068.337.205 0 .202-.203.27-.506.27-.813 0-2.267-.1-2.64-.1-.372 0-2.233.1-3.822.1-.438 0-.641-.068-.641-.27 0-.137.134-.205.303-.205.238 0 .71-.033.98-.067 1.557-.204 2.233-1.49 2.842-3.183l7.678-21.032zm39.283 23.3c3.55 0 4.634-.644 5.344-1.66.306-.439.61-1.355.677-1.828.07-.338.135-.541.303-.541.204 0 .273.135.273.778 0 1.049-.474 3.048-.676 3.895-.205.812-.237.881-1.015.881-5.649 0-11.331-.17-17.253-.17-.405 0-.607-.034-.607-.27 0-.17.068-.34.474-.95 5.039-7.62 10.146-15.24 14.85-22.894h-7.341c-1.725 0-3.788.1-4.873.678-1.216.643-1.825 1.896-1.925 2.674-.068.51-.206.611-.375.611-.167 0-.203-.17-.203-.44 0-.407.51-3.489.678-4.505.07-.475.134-.645.338-.645.304 0 .509.203 1.42.238 3.215.136 4.837.103 5.886.103h9.438c.508 0 .678.067.678.27 0 .135 0 .203-.137.406-4.907 7.79-10.012 15.579-15.153 23.369h9.2z" fill="#6D2323" fill-rule="evenodd"/>
+          </svg>
+        </div>
+
+        <div style="margin: 1em 1em; background-color: #f2e6d2; width: 2px;"></div>
+  
+        <p>
+          深圳市南山区科苑南路2600号<br/>
+          深圳湾安达市酒店 5 层 靓室 II<br/>
+          <br/>
+          电话: 0755-86261234
+        </p>
+      </div>
+
+      <!-- Map plugin -->
+      <div id="location"></div>
+
+      <!------------------------------------------------------------->
+      <hr style="border: 1px solid #f2e6d2; margin: 4em 0.5em 4em;">
+
+    </main>
+  </body>
+  <script type="text/javascript">
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    const title = urlParams.get('title');
+    document.getElementById('name').innerText = name;
+    document.getElementById('title').innerText = title;
+  </script>
+
+  <script type="text/javascript">
+    AMapLoader.load({
+      key: "4dc117729a9e85404b4627608310368d", //申请好的Web端开发者 Key，调用 load 时必填
+      version: "2.0", //指定要加载的 JS API 的版本，缺省时默认为 1.4.15
+    })
+      .then((AMap) => {
+        const map = new AMap.Map(
+          "location",
+          {
+            zoom: 15,
+            center: [113.947367,22.515019],
+            resizeEnable: true,
+          }
+        );
+
+        const marker = new AMap.Marker({
+          position: [113.947367,22.515019], //位置
+        });
+        map.add(marker); //添加到地图
+
+        // 创建信息窗体
+        var infoWindow = new AMap.InfoWindow({
+          isCustom: true,  // 使用自定义窗体
+          content: '<div style="font-size: 0.8em; color: #FEF9F1; background-color: #A31D1D; border: 1px solid #6D2323; padding: 0 0.5em; border-radius: 5px">深圳湾安达仕酒店</div>', // 信息窗体的内容可以是任意 html 片段
+          offset: new AMap.Pixel(0, -45)
+        });
+        infoWindow.open(map, marker.getPosition()); // 打开信息窗体
+      })
+      .catch((e) => {
+        console.error(e); //加载错误提示
+      });
+  </script>
+
+  <script type="text/javascript">
+    /**
+     * 获取当前系统日期并格式化为签名
+     */
+    function getCurrentDateSignature() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        return `${year} 年 ${month} 月 ${day} 日`;
+    }
+
+    /**
+     * 将当前日期签名添加到指定元素
+     * @param {string} elementId 要添加签名的元素ID
+     */
+    function addDateSignature(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.textContent = getCurrentDateSignature();
+        }
+    }
+
+    // 页面加载完成后自动添加签名到带有"date-signature"类的元素
+    document.addEventListener('DOMContentLoaded', () => {
+        const signatureElements = document.querySelectorAll('#date-signature');
+        signatureElements.forEach(element => {
+            element.textContent = getCurrentDateSignature();
+        });
+    });
+
+  </script>
+</html>
